@@ -1,0 +1,1303 @@
+/* =========================================================
+   CSS RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F4F7F6;
+    color: #1F2937;
+
+    /* Prevent the whole browser page from scrolling.
+       The main dashboard content will handle scrolling. */
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   MAIN DASHBOARD LAYOUT
+   ========================================================= */
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+
+    height: 100vh;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    background-color: #164E3B;
+    color: white;
+
+    padding: 25px 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    /* Sidebar occupies the complete viewport height */
+    height: 100vh;
+
+    /* Keeps sidebar visible while main content scrolls */
+    position: sticky;
+    top: 0;
+
+    overflow-y: auto;
+}
+
+
+/* Sidebar Header */
+
+.sidebar-header {
+    padding: 0 10px;
+}
+
+.sidebar-header h2 {
+    font-size: 22px;
+}
+
+
+/* Sidebar Navigation */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    color: white;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #246B50;
+}
+
+.nav-link.active {
+    background-color: #2E7D32;
+}
+
+
+/* Logout stays at the bottom */
+
+.logout-section {
+    margin-top: auto;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+    min-width: 0;
+
+    padding: 30px;
+
+    /* Main dashboard becomes the scrolling area */
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   DASHBOARD HEADER
+   ========================================================= */
+
+.dashboard-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.welcome-content h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.welcome-content p {
+    color: #6B7280;
+}
+
+.profile-summary {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+}
+
+
+/* ================================
+   SUMMARY CARDS
+================================ */
+
+.summary-cards {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+    width: 100%;
+
+    margin: 25px 0;
+}
+
+
+/* Common styling for all summary cards */
+
+.summary-income-card,
+.summary-expense-card,
+.summary-savings-card,
+.summary-balance-card {
+
+    background-color: #ffffff;
+
+    padding: 22px;
+
+    min-height: 145px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+
+/* Card hover effect */
+
+.summary-income-card:hover,
+.summary-expense-card:hover,
+.summary-savings-card:hover,
+.summary-balance-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Card heading */
+
+.summary-income-card h3,
+.summary-expense-card h3,
+.summary-savings-card h3,
+.summary-balance-card h3 {
+
+    margin-bottom: 10px;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: #1f2937;
+}
+
+
+/* Amount */
+
+.summary-income-card .amount,
+.summary-expense-card .amount,
+.summary-savings-card .amount,
+.summary-balance-card .amount {
+
+    margin-bottom: 6px;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    color: #1f2937;
+}
+
+
+/* Supporting text */
+
+.summary-income-card span,
+.summary-expense-card span,
+.summary-savings-card span,
+.summary-balance-card span {
+
+    font-size: 14px;
+
+    color: #6b7280;
+}
+
+
+/* ================================
+   INDIVIDUAL CARD ACCENTS
+================================ */
+
+.summary-income-card {
+
+    border-top: 4px solid #2e7d32;
+}
+
+.summary-expense-card {
+
+    border-top: 4px solid #dc2626;
+}
+
+.summary-savings-card {
+
+    border-top: 4px solid #2563eb;
+}
+
+.summary-balance-card {
+
+    border-top: 4px solid #7c3aed;
+}
+
+
+/* ================================
+   RESPONSIVE - TABLET
+================================ */
+
+@media (max-width: 1000px) {
+
+    .summary-cards {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+/* ================================
+   RESPONSIVE - MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    .summary-cards {
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+    }
+
+    .summary-income-card,
+    .summary-expense-card,
+    .summary-savings-card,
+    .summary-balance-card {
+
+        min-height: 125px;
+
+        padding: 18px;
+
+    }
+
+    .summary-income-card .amount,
+    .summary-expense-card .amount,
+    .summary-savings-card .amount,
+    .summary-balance-card .amount {
+
+        font-size: 22px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.section-heading p {
+    color: #6B7280;
+    font-size: 14px;
+}
+
+.section-heading a {
+    color: #2E7D32;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.section-heading a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* =========================================================
+   EXPENSE CHART
+   ========================================================= */
+
+.expense-chart {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Chart heading */
+
+.expense-chart .section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #E5E7EB;
+}
+
+
+.expense-chart .section-heading h2 {
+    margin-bottom: 5px;
+
+    font-size: 20px;
+    color: #1F2937;
+}
+
+
+.expense-chart .section-heading p {
+    color: #6B7280;
+
+    font-size: 14px;
+}
+
+
+/* Period dropdown */
+
+.expense-chart select {
+    padding: 6px 6px;
+    width: 110px;
+
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+
+    background-color: white;
+    cursor: pointer;
+}
+
+.expense-chart select:focus {
+    border-color: #2E7D32;
+}
+.select-wrapper {
+    position: relative;
+    width: 125px;
+}
+
+#period-select {
+    width: 100%;
+
+    padding: 8px 35px 8px 10px;
+
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+
+    background-color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Custom dropdown arrow */
+.select-wrapper::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    right: 18px;
+
+    width: 7px;
+    height: 7px;
+
+    border-right: 2px solid #111827;
+    border-bottom: 2px solid #111827;
+
+    transform: translateY(-65%) rotate(45deg);
+
+    pointer-events: none;
+}
+/* =========================================================
+   CHART AREA
+   ========================================================= */
+.dashboard-middle {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-bottom:15px;
+}
+
+.chart-placeholder {
+    height: 220px;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 20px 10px 35px;
+
+    margin-top: 10px;
+}
+
+
+/* Container for all bars */
+
+.chart-bars {
+    width: 100%;
+    height: 160px;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-around;
+
+    gap: 15px;
+}
+
+
+/* Individual bar */
+
+.bar {
+    width: 35px;
+
+    min-height: 20px;
+
+    background-color: #2E7D32;
+
+    border-radius: 6px 6px 0 0;
+
+    position: relative;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease,
+                opacity 0.2s ease;
+}
+
+
+/* Temporary heights
+   These are only for visualizing the chart
+   until JavaScript provides real values.
+*/
+
+.bar:nth-child(1) {
+    height: 60px;
+}
+
+.bar:nth-child(2) {
+    height: 100px;
+}
+
+.bar:nth-child(3) {
+    height: 75px;
+}
+
+.bar:nth-child(4) {
+    height: 130px;
+}
+
+.bar:nth-child(5) {
+    height: 90px;
+}
+
+.bar:nth-child(6) {
+    height: 145px;
+}
+
+.bar:nth-child(7) {
+    height: 110px;
+}
+
+
+/* Bar hover */
+
+.bar:hover {
+    opacity: 0.8;
+
+    transform: translateY(-3px);
+}
+
+
+/* Day label */
+
+.bar span {
+    position: absolute;
+
+    top: 100%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    color: #6B7280;
+
+    white-space: nowrap;
+}
+
+
+
+/* =========================================================
+   QUICK ACTIONS
+   ========================================================= */
+
+.quick-actions {
+    background-color: #FFFFFF;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Quick Actions heading */
+
+.quick-actions .section-heading {
+    margin-bottom: 15px;
+}
+
+
+.quick-actions .section-heading h2 {
+    font-size: 20px;
+
+    color: #1F2937;
+}
+
+
+/* Individual action */
+
+.action-card {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #E5E7EB;
+
+    border-radius: 8px;
+
+    background-color: #FFFFFF;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: border-color 0.2s ease,
+                background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+
+/* Remove bottom margin from last action */
+
+.action-card:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Action hover */
+
+.action-card:hover {
+    border-color: #2E7D32;
+
+    background-color: #F0F7F1;
+
+    transform: translateY(-2px);
+}
+
+
+/* Action icon */
+
+.action-card > span {
+    font-size: 22px;
+
+    flex-shrink: 0;
+}
+
+
+/* Action text */
+
+.action-card h3 {
+    margin-bottom: 4px;
+
+    font-size: 15px;
+
+    color: #111827;
+}
+
+
+.action-card p {
+    color: #6B7280;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+    .expense-chart,
+    .quick-actions {
+        padding: 18px;
+    }
+
+    .chart-bars {
+        gap: 10px;
+    }
+
+    .bar {
+        width: 30px;
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    /* Stack chart heading */
+
+    .expense-chart .section-heading {
+        flex-direction: column;
+    }
+
+
+    /* Dropdown takes reasonable width */
+
+    .expense-chart select {
+        width: 100%;
+    }
+
+
+    /* Smaller chart */
+
+    .chart-placeholder {
+        height: 190px;
+
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+
+    .chart-bars {
+        height: 140px;
+
+        gap: 6px;
+    }
+
+
+    .bar {
+        width: 24px;
+    }
+
+
+    /* Smaller card padding */
+
+    .expense-chart,
+    .quick-actions {
+        padding: 15px;
+    }
+
+
+    /* Smaller action cards */
+
+    .action-card {
+        padding: 12px;
+    }
+
+}
+
+/* =========================================================
+   BOTTOM GRID
+   ========================================================= */
+
+.bottom-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   COMMON DASHBOARD CARD
+   ========================================================= */
+
+.dashboard-card {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   CATEGORY ITEMS
+   ========================================================= */
+
+.category-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.category-item:last-child {
+    border-bottom: none;
+}
+
+.category-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background-color: #F0F7F1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.category-info h3 {
+    font-size: 15px;
+
+    margin-bottom: 4px;
+}
+
+.category-info p {
+    color: #6B7280;
+
+    font-size: 13px;
+}
+
+.category-item > span:last-child {
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #6B7280;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TOP EXPENSE ITEMS
+   ========================================================= */
+
+.expense-item {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.expense-item:last-child {
+    border-bottom: none;
+}
+
+.expense-item h3 {
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+.expense-item p {
+    font-size: 13px;
+
+    color: #6B7280;
+}
+
+.expense-item strong {
+    color: #DC2626;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   RECENT TRANSACTIONS
+   ========================================================= */
+
+.recent-transactions {
+    margin-bottom: 25px;
+}
+
+.transaction-list {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.transaction-item {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-details {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.transaction-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.transaction-icon.expense {
+    background-color: #FEE2E2;
+}
+
+.transaction-icon.income {
+    background-color: #DCFCE7;
+}
+
+.transaction-item h3 {
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+.transaction-item p {
+    color: #6B7280;
+
+    font-size: 13px;
+}
+
+.expense-amount {
+    color: #DC2626;
+
+    white-space: nowrap;
+}
+
+.income-amount {
+    color: #2E7D32;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN — LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .dashboard-container {
+        grid-template-columns: 210px minmax(0, 1fr);
+    }
+
+    .main-content {
+        padding: 25px;
+    }
+
+    .summary-section {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN — TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .dashboard-container {
+        grid-template-columns: 180px minmax(0, 1fr);
+    }
+
+    .sidebar {
+        padding: 20px 10px;
+    }
+
+    .sidebar-header h2 {
+        font-size: 19px;
+    }
+
+    .nav-link {
+        padding: 10px;
+
+        font-size: 14px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-header {
+        margin-bottom: 20px;
+    }
+
+    .welcome-content h1 {
+        font-size: 26px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN — MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .dashboard-container {
+        display: block;
+
+        height: auto;
+        min-height: 100vh;
+    }
+
+    /*
+       The current V1 hides the sidebar on mobile.
+       Later you can replace this with a hamburger/mobile menu.
+    */
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        width: 100%;
+
+        height: auto;
+
+        min-height: 100vh;
+
+        overflow: visible;
+
+        padding: 20px 15px;
+    }
+
+
+    /* Header */
+
+    .dashboard-header {
+        flex-direction: row;
+
+        align-items: center;
+
+        gap: 15px;
+    }
+
+    .welcome-content h1 {
+        font-size: 24px;
+    }
+
+    .welcome-content p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+
+    /* Summary cards */
+
+    .summary-section {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .summary-card {
+        padding: 18px;
+    }
+
+
+    /* Chart + actions */
+
+    .dashboard-row {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .expense-chart,
+    .quick-actions,
+    .dashboard-card {
+        padding: 18px;
+    }
+
+
+    /* Section headings */
+
+    .section-heading {
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+    .section-heading h2 {
+        font-size: 18px;
+    }
+
+    .section-heading p {
+        font-size: 13px;
+    }
+
+
+    /* Chart */
+
+    .chart-placeholder {
+        height: 200px;
+
+        padding: 15px 5px 35px;
+    }
+
+    .chart-bars {
+        height: 150px;
+
+        gap: 8px;
+    }
+
+    .bar {
+        width: 25px;
+    }
+
+
+    /* Categories */
+
+    .category-item {
+        padding: 12px 0;
+    }
+
+
+    /* Expenses */
+
+    .expense-item {
+        padding: 12px 0;
+    }
+
+
+    /* Transactions */
+
+    .transaction-item {
+        align-items: flex-start;
+
+        gap: 10px;
+
+        padding: 14px 0;
+    }
+
+    .transaction-details {
+        align-items: flex-start;
+
+        min-width: 0;
+    }
+
+    .transaction-item h3 {
+        font-size: 14px;
+    }
+
+    .transaction-item p {
+        font-size: 12px;
+    }
+
+    .expense-amount,
+    .income-amount {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE DEVICES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .main-content {
+        padding: 15px 12px;
+    }
+
+    .dashboard-header {
+        align-items: flex-start;
+    }
+
+    .welcome-content h1 {
+        font-size: 21px;
+    }
+
+    .profile-summary {
+        width: 40px;
+        height: 40px;
+    }
+
+    .summary-card .amount {
+        font-size: 23px;
+    }
+
+    .action-card {
+        padding: 10px;
+    }
+
+    .action-card h3 {
+        font-size: 14px;
+    }
+
+    .action-card p {
+        font-size: 11px;
+    }
+}

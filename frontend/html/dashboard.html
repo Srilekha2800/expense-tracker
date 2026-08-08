@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Expense Tracker</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- ==================== SIDEBAR ==================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+                <h2>Expense Tracker</h2>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#" class="nav-link active">
+                    <span>🏠</span>
+                    Dashboard
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>💳</span>
+                    My Expenses
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>📊</span>
+                    Categories
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>📈</span>
+                    Reports
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>👤</span>
+                    Profile
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>⚙️</span>
+                    Settings
+                </a>
+
+            </nav>
+
+            <div class="logout-section">
+
+                <a href="#" class="nav-link">
+                    <span>↪️</span>
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ==================== MAIN CONTENT ==================== -->
+
+        <main class="main-content">
+
+
+            <!-- ==================== DASHBOARD HEADER ==================== -->
+
+            <header class="dashboard-header">
+
+                <div class="welcome-content">
+
+                    <h1>Welcome Back!</h1>
+
+                    <p>
+                        Here's what's happening with your finances today.
+                    </p>
+
+                </div>
+
+                <div class="profile-summary">
+                    <span>👤</span>
+                </div>
+
+            </header>
+
+
+            <!-- ==================== FINANCIAL SUMMARY ==================== -->
+
+            <section class="summary-cards">
+
+                <div class="summary-income-card">
+
+                    <h3>Total Income</h3>
+
+                    <p class="amount">
+                        ₹75,000
+                    </p>
+
+                    <span>
+                        +12% from last month
+                    </span>
+
+                </div>
+
+
+                <div class="summary-expense-card">
+
+                    <h3>Total Expenses</h3>
+
+                    <p class="amount">
+                        ₹32,450
+                    </p>
+
+                    <span>
+                        8% from last month
+                    </span>
+
+                </div>
+
+
+                <div class="summary-savings-card">
+
+                    <h3>Total Savings</h3>
+
+                    <p class="amount">
+                        ₹20,300
+                    </p>
+
+                    <span>
+                        +18% from last month
+                    </span>
+
+                </div>
+
+
+                <div class="summary-balance-card">
+
+                    <h3>Current Balance</h3>
+
+                    <p class="amount">
+                        ₹42,550
+                    </p>
+
+                    <span>
+                        Available balance
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================== CHART + QUICK ACTIONS ==================== -->
+
+            <section class="dashboard-middle">
+                
+                <!-- Expense Chart -->
+
+                <div class="expense-chart">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <h2>Expenses Overview</h2>
+
+                            <p>
+                                Track your spending over time.
+                            </p>
+                        </div>
+
+                        <div class="select-wrapper">
+                            <select name="period" id="period-select">
+                                <option>This Week</option>
+                                <option>This Month</option>
+                                <option>Last Month</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Temporary chart area -->
+
+                    <div class="chart-placeholder">
+
+                        <div class="chart-bars">
+
+                            <div class="bar">
+                                <span>Mon</span>
+                            </div>
+
+                            <div class="bar">
+                                <span>Tue</span>
+                            </div>
+
+                            <div class="bar">
+                                <span>Wed</span>
+                            </div>
+
+                            <div class="bar">
+                                <span>Thu</span>
+                            </div>
+
+                            <div class="bar">
+                                <span>Fri</span>
+                            </div>
+
+                            <div class="bar">
+                                <span>Sat</span>
+                            </div>
+
+                            <div class="bar">
+                                <span>Sun</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Quick Actions -->
+
+                <div class="quick-actions">
+
+                    <div class="section-heading">
+
+                        <h2>Quick Actions</h2>
+
+                    </div>
+
+
+                    <button class="action-card" type="button">
+
+                        <span>➕</span>
+
+                        <div>
+                            <h3>Add Expense</h3>
+                            <p>Record a new expense.</p>
+                        </div>
+
+                    </button>
+
+
+                    <button class="action-card" type="button">
+
+                        <span>💰</span>
+
+                        <div>
+                            <h3>Add Income</h3>
+                            <p>Record a new income.</p>
+                        </div>
+
+                    </button>
+
+
+                    <button class="action-card" type="button">
+
+                        <span>✏️</span>
+
+                        <div>
+                            <h3>View / Update Expenses</h3>
+                            <p>Manage your transactions.</p>
+                        </div>
+
+                    </button>
+
+
+                    <button class="action-card" type="button">
+
+                        <span>📊</span>
+
+                        <div>
+                            <h3>View Reports</h3>
+                            <p>Analyze your financial data.</p>
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================== CATEGORIES + TOP EXPENSES ==================== -->
+
+            <section class="bottom-grid">
+
+
+                <!-- Top Categories -->
+
+                <div class="dashboard-card">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Top Categories</h2>
+
+                            <p>
+                                Your highest spending categories.
+                            </p>
+
+                        </div>
+
+                        <a href="#">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div class="category-item">
+
+                        <span class="category-icon">🍔</span>
+
+                        <div class="category-info">
+
+                            <h3>Food & Dining</h3>
+
+                            <p>₹9,850</p>
+
+                        </div>
+
+                        <span>30.3%</span>
+
+                    </div>
+
+
+                    <div class="category-item">
+
+                        <span class="category-icon">🚗</span>
+
+                        <div class="category-info">
+
+                            <h3>Transport</h3>
+
+                            <p>₹6,200</p>
+
+                        </div>
+
+                        <span>19.1%</span>
+
+                    </div>
+
+
+                    <div class="category-item">
+
+                        <span class="category-icon">🛒</span>
+
+                        <div class="category-info">
+
+                            <h3>Shopping</h3>
+
+                            <p>₹5,750</p>
+
+                        </div>
+
+                        <span>17.7%</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Top Expenses -->
+
+                <div class="dashboard-card">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Top Expenses</h2>
+
+                            <p>
+                                Your highest individual expenses.
+                            </p>
+
+                        </div>
+
+                        <a href="#">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div class="expense-item">
+
+                        <div>
+
+                            <h3>Restaurant Bill</h3>
+
+                            <p>18 May 2026</p>
+
+                        </div>
+
+                        <strong>₹2,450</strong>
+
+                    </div>
+
+
+                    <div class="expense-item">
+
+                        <div>
+
+                            <h3>Grocery Shopping</h3>
+
+                            <p>17 May 2026</p>
+
+                        </div>
+
+                        <strong>₹2,150</strong>
+
+                    </div>
+
+
+                    <div class="expense-item">
+
+                        <div>
+
+                            <h3>Fuel</h3>
+
+                            <p>15 May 2026</p>
+
+                        </div>
+
+                        <strong>₹1,800</strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================== RECENT TRANSACTIONS ==================== -->
+
+            <section class="recent-transactions dashboard-card">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>Recent Transactions</h2>
+
+                        <p>
+                            Your latest income and expenses.
+                        </p>
+
+                    </div>
+
+                    <a href="#">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div class="transaction-list">
+
+
+                    <!-- Transaction 1 -->
+
+                    <div class="transaction-item">
+
+                        <div class="transaction-details">
+
+                            <span class="transaction-icon expense">
+                                💸
+                            </span>
+
+                            <div>
+
+                                <h3>Restaurant Bill</h3>
+
+                                <p>Food & Dining · 18 May 2026</p>
+
+                            </div>
+
+                        </div>
+
+                        <strong class="expense-amount">
+                            -₹2,450
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Transaction 2 -->
+
+                    <div class="transaction-item">
+
+                        <div class="transaction-details">
+
+                            <span class="transaction-icon income">
+                                💰
+                            </span>
+
+                            <div>
+
+                                <h3>Salary</h3>
+
+                                <p>Income · 17 May 2026</p>
+
+                            </div>
+
+                        </div>
+
+                        <strong class="income-amount">
+                            +₹50,000
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Transaction 3 -->
+
+                    <div class="transaction-item">
+
+                        <div class="transaction-details">
+
+                            <span class="transaction-icon expense">
+                                🛒
+                            </span>
+
+                            <div>
+
+                                <h3>Grocery Shopping</h3>
+
+                                <p>Shopping · 17 May 2026</p>
+
+                            </div>
+
+                        </div>
+
+                        <strong class="expense-amount">
+                            -₹2,150
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Transaction 4 -->
+
+                    <div class="transaction-item">
+
+                        <div class="transaction-details">
+
+                            <span class="transaction-icon expense">
+                                🚗
+                            </span>
+
+                            <div>
+
+                                <h3>Fuel</h3>
+
+                                <p>Transport · 15 May 2026</p>
+
+                            </div>
+
+                        </div>
+
+                        <strong class="expense-amount">
+                            -₹1,800
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>
