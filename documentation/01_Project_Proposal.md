@@ -2,7 +2,7 @@
 
 ## Project Information
 
-**Project Name:** Expense Tracker System
+**Project Name:** Expense Tracker
 
 **Project Type:** Responsive Web Application
 

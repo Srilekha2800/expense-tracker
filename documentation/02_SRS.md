@@ -1,6 +1,6 @@
 # Software Requirements Specification (SRS)
 
-# Expense Tracker System
+# Expense Tracker
 
 **Version:** 1.0
 

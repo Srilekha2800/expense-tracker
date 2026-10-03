@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Expenses</title>
+    <link rel="stylesheet" href="../css/my-expenses.css">
+</head>
+<body>
+    
+    <div class="expenses-container">
+
+        <!--  SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+                <h2>Expense Tracker</h2>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#" class="nav-link">
+                    <span>🏠</span>
+                    Dashboard
+                </a>
+
+
+                <a href="#" class="nav-link active">
+                    <span>💳</span>
+                    My Expenses
+                </a>
+
+
+                <a href="#" class="nav-link">
+                    <span>📊</span>
+                    Categories
+                </a>
+
+
+                <a href="#" class="nav-link">
+                    <span>📈</span>
+                    Reports
+                </a>
+
+
+                <a href="#" class="nav-link">
+                    <span>👤</span>
+                    Profile
+                </a>
+
+
+                <a href="#" class="nav-link">
+                    <span>⚙️</span>
+                    Settings
+                </a>
+
+            </nav>
+
+            <div class="logout-section">
+
+                <a href="#" class="nav-link">
+                    <span>↪️</span>
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- Main-Content  -->
+        <main class="main-content">
+
+            <!-- Expenses-header  -->
+
+            <header class="main-heading">
+
+                <div class="welcome-content">
+                    <h1>
+                        Expenses Management
+                    </h1>
+                    <p>
+                        Manage your expenses effectively here.
+                    </p>
+                </div>
+
+                <div class="profile-summary">
+                    <span>👤</span>
+                </div>
+
+            </header>
+
+            <!-- Expenses Summary -->
+            <section class="summary-cards">
+
+                <div class="total-spent">
+
+                    <h3>Total Spent</h3>
+
+                    <p class="amount">
+                        ₹1,00,000
+                    </p>
+
+                    <span>
+                        Total expenses over period
+                    </span>
+
+                </div>
+
+
+                <div class="monthly-budget">
+
+                    <h3>Monthly Budget</h3>
+
+                    <p class="amount">
+                        ₹1,50,000
+                    </p>
+
+                    <span>
+                        Monthly spending limit
+                    </span>
+
+                </div>
+
+
+                <div class="top-spent">
+
+                    <h3>Top Spent Area</h3>
+
+                    <p class="spent-area">
+                        Entertainment
+                    </p>
+
+                    <span>
+                        ₹50,000 spent
+                        Highest Spending Category
+                    </span>
+                </div>
+
+
+                <div class="daily-average">
+
+                    <h3>Daily Average</h3>
+
+                    <p class="average-amount">
+                        ₹20,000/day
+                    </p>
+
+                    <span>
+                        Average daily spendings
+                    </span>
+                </div>
+
+            </section>
+            
+
+            <!-- Search and Filtering -->
+
+            <section class="search-filter">
+
+                <div class="search">
+
+                    <input type="text" id="searchInput" name="search" placeholder="Search expenses title,categories,amount...">
+                    
+                </div>
+                
+                <div class="filter">
+
+                    <div class="filter-categories">
+
+                        <select class="select-categories">
+
+                            <option value="All">All Categories</option>
+                            <option value="Housing">Housing</option>
+                            <option value="Food & Dining">Food & Dining</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Work & Tech">Work & Tech</option>
+                            <option value="Health & Fitness">Health & Fitness</option>
+                            <option value="Shopping">Shopping</option>
+                        </select>
+
+                    </div>
+
+                    <div class="filter-payments">
+
+                        <select class="select-payments">
+
+                            <option value="All">All Payments</option>
+                            <option value="UPI">UPI</option>
+                            <option value="Net Banking">Net Banking</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="Cash">Cash</option>
+                        </select>
+                    </div>
+
+                    <div class="sorting">
+
+                        <select class="select-sorting">
+
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="amount-decr">Amount High → Low</option>
+                            <option value="amount-incr">Amount Low → High</option>
+                        
+                        </select>
+
+                    </div>
+                    
+                </div>
+
+                <div class="quick-categories">
+
+                    Quick:
+                    <button type="button">All</button>
+                    <button type="button">🏠 Housing</button>
+                    <button type="button">🍔 Food & Dining</button>
+                    <button type="button">🎬 Entertainment</button>
+                    <button type="button">🚗 Transportation</button>
+                    <button type="button">💻 Work & Tech</button>
+                    <button type="button">🛍️ Shopping</button>
+                </div>
+
+            </section>
+
+            <section class="expenses-list">
+
+                <div class="list-heading">
+                    <h3>
+                        Expenses
+                    </h3>
+                </div>
+                
+                <p>
+                    🛈 Click an item to view or use inline actions 
+                </p>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Payment Method</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Groceries</td>
+                            <td>Housing</td>
+                            <td>20-09-2026</td>
+                            <td>UPI</td>
+                            <td>₹2500</td>
+                            <td>⋮</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <div class="pagination">
+                    <p>
+                        Showing 1 to 1 out of 1 items
+                    </p>
+                    <span>
+                        <button>Previous</button>
+                        <button>1</button>
+                        <button>Next</button>
+                    </span>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
