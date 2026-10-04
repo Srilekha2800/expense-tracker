@@ -73,7 +73,7 @@
 
             <!-- Expenses-header  -->
 
-            <header class="main-heading">
+            <header class="expenses-header">
 
                 <div class="welcome-content">
                     <h1>
@@ -101,7 +101,7 @@
                         ₹1,00,000
                     </p>
 
-                    <span>
+                    <span class="description">
                         Total expenses over period
                     </span>
 
@@ -116,7 +116,7 @@
                         ₹1,50,000
                     </p>
 
-                    <span>
+                    <span class="description">
                         Monthly spending limit
                     </span>
 
@@ -127,13 +127,12 @@
 
                     <h3>Top Spent Area</h3>
 
-                    <p class="spent-area">
-                        Entertainment
+                    <p class="amount">
+                        ₹40,000
                     </p>
 
-                    <span>
-                        ₹50,000 spent
-                        Highest Spending Category
+                    <span class="description">
+                        Entertainment
                     </span>
                 </div>
 
@@ -142,11 +141,11 @@
 
                     <h3>Daily Average</h3>
 
-                    <p class="average-amount">
+                    <p class="amount">
                         ₹20,000/day
                     </p>
 
-                    <span>
+                    <span class="description">
                         Average daily spendings
                     </span>
                 </div>
@@ -156,59 +155,62 @@
 
             <!-- Search and Filtering -->
 
-            <section class="search-filter">
+            <section class="search-filter-main">
 
-                <div class="search">
+                <div class="search-filter">
+                    <div class="search">
 
-                    <input type="text" id="searchInput" name="search" placeholder="Search expenses title,categories,amount...">
+                        <input type="text" class="search-input" id="searchInput" name="search" placeholder="Search expenses title,categories,amount...">
+                        <button class="search-button">Search</button>
+                    </div>
                     
-                </div>
-                
-                <div class="filter">
+                    <div class="filter">
 
-                    <div class="filter-categories">
+                        <div class="filter-categories">
 
-                        <select class="select-categories">
+                            <select class="select-categories">
 
-                            <option value="All">All Categories</option>
-                            <option value="Housing">Housing</option>
-                            <option value="Food & Dining">Food & Dining</option>
-                            <option value="Entertainment">Entertainment</option>
-                            <option value="Transportation">Transportation</option>
-                            <option value="Utilities">Utilities</option>
-                            <option value="Work & Tech">Work & Tech</option>
-                            <option value="Health & Fitness">Health & Fitness</option>
-                            <option value="Shopping">Shopping</option>
-                        </select>
+                                <option value="All">All Categories</option>
+                                <option value="Housing">Housing</option>
+                                <option value="Food & Dining">Food & Dining</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Transportation">Transportation</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Work & Tech">Work & Tech</option>
+                                <option value="Health & Fitness">Health & Fitness</option>
+                                <option value="Shopping">Shopping</option>
+                            </select>
 
-                    </div>
+                        </div>
 
-                    <div class="filter-payments">
+                        <div class="filter-payments">
 
-                        <select class="select-payments">
+                            <select class="select-payments">
 
-                            <option value="All">All Payments</option>
-                            <option value="UPI">UPI</option>
-                            <option value="Net Banking">Net Banking</option>
-                            <option value="Credit Card">Credit Card</option>
-                            <option value="Debit Card">Debit Card</option>
-                            <option value="Cash">Cash</option>
-                        </select>
-                    </div>
+                                <option value="All">All Payments</option>
+                                <option value="UPI">UPI</option>
+                                <option value="Net Banking">Net Banking</option>
+                                <option value="Credit Card">Credit Card</option>
+                                <option value="Debit Card">Debit Card</option>
+                                <option value="Cash">Cash</option>
+                            </select>
+                        </div>
 
-                    <div class="sorting">
+                        <div class="sorting">
 
-                        <select class="select-sorting">
+                            <select class="select-sorting">
 
-                            <option value="newest">Newest First</option>
-                            <option value="oldest">Oldest First</option>
-                            <option value="amount-decr">Amount High → Low</option>
-                            <option value="amount-incr">Amount Low → High</option>
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="amount-decr">Amount High → Low</option>
+                                <option value="amount-incr">Amount Low → High</option>
+                            
+                            </select>
+
+                        </div>
                         
-                        </select>
-
                     </div>
-                    
+
                 </div>
 
                 <div class="quick-categories">

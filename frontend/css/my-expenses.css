@@ -1,0 +1,815 @@
+/* Css Reset */
+
+* {
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box; 
+}
+
+/* Body */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F4F7F6;
+    color: #1F2937; 
+
+    /* Prevent horizontal overflow */
+    overflow-x: hidden;
+}
+
+/* MY Expenses Layout */
+
+.expenses-container {
+    display: grid;
+
+    grid-template-columns: 240px minmax(0, 1fr); 
+
+    min-height:100vh;
+    height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar {
+    background-color: #164E3B;
+    color: white;
+
+    padding: 25px 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    /*
+       Width is controlled by the grid.
+       This prevents sidebar/content overlap.
+    */
+    width: 100%;
+
+    height: 100vh;
+
+    position: sticky;
+    top: 0;
+
+    overflow-y: auto;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    padding: 0 10px;
+}
+
+.sidebar-header h2 {
+    font-size: 22px;
+}
+
+/* Sidebar Navigation */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 30px;
+}
+
+
+/* Navigation links */
+
+.sidebar-nav a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 7px 10px;
+
+    font-size: 14px;
+
+    border-radius: 7px;
+
+    color: white;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+
+/* Navigation icons */
+
+.sidebar-nav a span {
+    font-size: 16px;
+}
+
+
+/* Active navigation */
+
+.sidebar-nav a.active {
+    padding: 9px 12px;
+
+    background-color: #2E7D32;
+
+    border-radius: 7px;
+}
+
+
+/* Hover */
+
+.sidebar-nav a:hover {
+    background-color: #246B50;
+}
+
+/* Logout Section */
+
+.logout-section {
+
+    margin-top:auto;
+}
+
+.logout-section .nav-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 7px 10px;
+
+    color: #FFFFFF;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    border-radius: 6px;
+}
+
+.logout-section .nav-link:hover {
+    background-color: #2A6F5A;
+    color: #FFFFFF;
+}
+
+/* Main Content */
+
+.main-content {
+    min-width: 0;
+
+    width: 100%;
+
+    padding: 30px;
+
+    height: 100vh;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.expenses-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.welcome-content {
+    min-width: 0;
+}
+
+
+.welcome-content h1 {
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+
+.welcome-content p {
+    color: #6B7280;
+
+    line-height: 1.5;
+}
+
+
+.profile-summary {
+
+    width: 45px;
+    
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+}
+
+
+/* Summary Cards */
+
+.summary-cards {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    width: 100%;
+
+    margin: 25px 0;
+}
+
+.total-spent,
+.monthly-budget,
+.top-spent,
+.daily-average {
+
+    background-color:#ffffff;
+
+    padding:22px;
+
+    min-height:145px;
+
+    min-width:0;
+
+    border-radius:12px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    border: 1px solid #E5E7EB;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+    justify-content: center;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Summary-cards hover effect */
+
+.total-spent:hover,
+.monthly-budget:hover,
+.top-spent:hover,
+.daily-average:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10);
+}
+
+/* summary cards header */
+.total-spent h3,
+.monthly-budget h3,
+.top-spent h3,
+.daily-average h3 {
+
+    margin-bottom: 10px;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: #1F2937;
+}
+
+/* summary cards amount */
+.total-spent .amount,
+.monthly-budget .amount,
+.top-spent .amount,
+.daily-average .amount {
+
+    margin-bottom: 6px;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    color: #1F2937;
+}
+
+
+/* summary cards  content description */
+
+.total-spent .description,
+.monthly-budget .description,
+.top-spent .description,
+.daily-average .description {
+
+    font-size: 14px;
+
+    color: #4e545f;
+}
+
+/* summary cards accents */
+
+.total-spent {
+    border-top: 4px solid #c94b19;
+}
+.monthly-budget {
+    border-top: 4px solid #2E7D32;
+}
+.top-spent {
+    border-top: 4px solid #331c8f;
+}
+.daily-average {
+    border-top: 4px solid #a1a127;
+}
+
+
+/* ==================================================
+   6. SEARCH AND FILTER PANEL
+   ================================================== */
+
+.search-filter-main {
+    margin-bottom: 28px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03);
+}
+
+/* First row: search input + filters */
+
+.search-filter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+/* Search input and button */
+
+.search {
+    display: flex;
+    align-items: center;
+    flex: 1 1 300px;
+    min-width: 0;
+    gap: 8px;
+}
+
+.search-input {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    background-color: #F9FAFB;
+    color: #1F2937;
+    outline: none;
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.search-input::placeholder {
+    color: #94A3B8;
+}
+
+.search-input:focus {
+    border-color: #12812a;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* Search button */
+
+.search-button {
+    flex-shrink: 0;
+    padding: 10px 16px;
+    border: 1px solid #18a81a;
+    border-radius: 8px;
+    background-color: #088a20;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.search-button:hover {
+    background-color: #09761f;
+}
+
+/* Category, payment and sorting dropdowns */
+
+.filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.filter-categories,
+.filter-payments,
+.sorting {
+    min-width: 0;
+}
+
+.select-categories,
+.select-payments,
+.select-sorting {
+    width: 100%;
+    padding: 10px 30px 10px 12px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #374151;
+    cursor: pointer;
+}
+
+.select-categories {
+    min-width: 145px;
+}
+
+.select-payments {
+    min-width: 130px;
+}
+
+.select-sorting {
+    min-width: 155px;
+}
+
+.select-categories:focus,
+.select-payments:focus,
+.select-sorting:focus {
+    outline: none;
+    border-color: #0dbc68;
+}
+
+/* Second row: quick categories */
+
+.quick-categories {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: #64748B;
+    font-size: 14px;
+}
+
+.quick-categories button {
+    padding: 7px 13px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background-color: #F1F5F9;
+    color: #334155;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.quick-categories button:hover {
+    background-color: #E0E7FF;
+    color: #4338CA;
+    border-color: #C7D2FE;
+}
+
+/* Highlight the All button for the initial static design */
+
+.quick-categories button:first-of-type {
+    background-color: #4F46E5;
+    color: #FFFFFF;
+}
+
+
+/* ==================================================
+   7. EXPENSE LIST CARD
+   ================================================== */
+
+.expenses-list {
+    min-width: 0;
+    padding: 22px;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03);
+}
+
+/* List heading */
+
+.list-heading {
+    margin-bottom: 4px;
+}
+
+.list-heading h3 {
+    color: #111827;
+    font-size: 19px;
+}
+
+.expenses-list > p {
+    margin-bottom: 18px;
+    color: #94A3B8;
+    font-size: 13px;
+}
+
+
+/* ==================================================
+   8. EXPENSE TABLE
+   ================================================== */
+
+.expenses-list table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+/* Table heading row */
+
+.expenses-list thead {
+    background-color: #F8FAFC;
+}
+
+.expenses-list th {
+    padding: 13px 14px;
+    border-bottom: 1px solid #E2E8F0;
+    color: #64748B;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* Transaction rows */
+
+.expenses-list td {
+    padding: 17px 14px;
+    border-bottom: 1px solid #F1F5F9;
+    color: #334155;
+    font-size: 14px;
+}
+
+.expenses-list tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.expenses-list tbody tr:hover {
+    background-color: #F8FAFC;
+}
+
+.expenses-list tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Amount column */
+
+.expenses-list td:nth-child(5) {
+    color: #111827;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Actions column */
+
+.expenses-list td:last-child {
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   9. TABLE SCROLLING
+   ================================================== */
+
+/*
+   Your table has a minimum width so its columns remain readable.
+   The expenses-list card itself should not create page-wide overflow.
+*/
+
+.expenses-list {
+    overflow-x: auto;
+}
+
+
+/* ==================================================
+   10. PAGINATION
+   ================================================== */
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #E2E8F0;
+}
+
+.pagination p {
+    color: #64748B;
+    font-size: 13px;
+}
+
+.pagination span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pagination button {
+    min-width: 34px;
+    padding: 7px 10px;
+    border: 1px solid #D1D5DB;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    color: #475569;
+    font-size: 13px;
+    transition: background-color 0.2s ease,
+                color 0.2s ease;
+}
+
+.pagination button:hover {
+    background-color: #EEF2FF;
+    color: #4338CA;
+}
+
+/* The middle button represents page 1 in your static example */
+
+.pagination button:nth-child(2) {
+    border-color: #4F46E5;
+    background-color: #4F46E5;
+    color: #FFFFFF;
+}
+
+
+/* ==================================================
+   11. TABLET RESPONSIVENESS
+   ================================================== */
+
+@media (max-width: 1100px) {
+
+    .expenses-container {
+        grid-template-columns: 210px minmax(0, 1fr);
+    }
+
+    .main-content {
+        padding: 24px;
+    }
+
+    .summary-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .search-filter {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .search {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .filter {
+        flex-wrap: wrap;
+    }
+
+    .filter-categories,
+    .filter-payments,
+    .sorting {
+        flex: 1 1 150px;
+    }
+
+    .select-categories,
+    .select-payments,
+    .select-sorting {
+        min-width: 0;
+    }
+}
+
+
+/* ==================================================
+   12. MOBILE RESPONSIVENESS
+   ================================================== */
+
+@media (max-width: 650px) {
+
+    .expenses-container {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /*
+       Temporary choice: hide the sidebar on mobile.
+       A hamburger menu can be added with JavaScript later.
+    */
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+
+    .expenses-header {
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .welcome-content h1 {
+        font-size: 24px;
+    }
+
+    .welcome-content p {
+        font-size: 14px;
+    }
+
+    .summary-cards {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .total-spent,
+    .monthly-budget,
+    .top-spent,
+    .daily-average {
+        padding: 18px;
+    }
+
+    .amount {
+        font-size: 24px;
+    }
+
+    .search-filter-main {
+        padding: 14px;
+        margin-bottom: 20px;
+    }
+
+    .search-filter {
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+
+    .search {
+        flex-wrap: wrap;
+    }
+
+    .search-input {
+        flex-basis: 100%;
+    }
+
+    .search-button {
+        width: 100%;
+    }
+
+    .filter {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .select-categories,
+    .select-payments,
+    .select-sorting {
+        width: 100%;
+    }
+
+    .quick-categories {
+        gap: 7px;
+    }
+
+    .quick-categories button {
+        padding: 7px 10px;
+    }
+
+    .expenses-list {
+        padding: 14px;
+    }
+
+    .expenses-list table {
+        min-width: 720px;
+    }
+
+    .pagination {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
