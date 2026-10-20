@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories | Expense Tracker</title>
+    <link rel="stylesheet" href="../css/categories.css">
+</head>
+<body>
+
+    <div class="categories-container">
+
+        <!-- SECTION 1: Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Expense Tracker</h2>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="nav-link">
+                    <span>🏠</span>
+                    Dashboard
+                </a>
+
+                <a href="my-expenses.html" class="nav-link">
+                    <span>💳</span>
+                    My Expenses
+                </a>
+
+                <a href="categories.html" class="nav-link active">
+                    <span>📊</span>
+                    Categories
+                </a>
+
+                <a href="reports.html" class="nav-link">
+                    <span>📈</span>
+                    Reports
+                </a>
+
+                <a href="profile.html" class="nav-link">
+                    <span>👤</span>
+                    Profile
+                </a>
+
+                <a href="settings.html" class="nav-link">
+                    <span>⚙️</span>
+                    Settings
+                </a>
+
+            </nav>
+
+            <div class="logout-section">
+
+                <a href="#" class="nav-link">
+                    <span>↪️</span>
+                    Logout
+                </a>
+
+            </div>
+        </aside>
+
+        <!-- Remaining sections go inside main-content -->
+        <main class="main-content">
+
+            <!-- SECTION 2: Page header -->
+            <header class="categories-header">
+                <div class="header-content">
+                    <h1>Categories</h1>
+                    <p>
+                        Organize your expenses and understand your
+                        spending by category.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+                    <button type="button" class="add-category-button"
+                            id="openAddCategory">
+                        <span aria-hidden="true">＋</span>
+                        Add Category
+                    </button>
+
+                    <button type="button" class="profile-summary"
+                            aria-label="Open profile">
+                        👤
+                    </button>
+                </div>
+            </header>
+
+            <!-- SECTION 3: Summary cards -->
+            <section class="category-summary" aria-label="Category summary">
+
+                <article class="summary-card total-categories-card">
+                    <div class="summary-icon" aria-hidden="true">🗂️</div>
+                    <div class="summary-details">
+                        <h2>Total Categories</h2>
+                        <p class="summary-value">8</p>
+                        <p class="summary-description">Available categories</p>
+                    </div>
+                </article>
+
+                <article class="summary-card total-spent-card">
+                    <div class="summary-icon" aria-hidden="true">💰</div>
+                    <div class="summary-details">
+                        <h2>Total Spent</h2>
+                        <p class="summary-value">₹24,500</p>
+                        <p class="summary-description">This month</p>
+                    </div>
+                </article>
+
+                <article class="summary-card top-category-card">
+                    <div class="summary-icon" aria-hidden="true">⭐</div>
+                    <div class="summary-details">
+                        <h2>Top Spending Category</h2>
+                        <p class="summary-value">Food &amp; Dining</p>
+                        <p class="summary-description">₹8,000 spent</p>
+                    </div>
+                </article>
+
+                <article class="summary-card budget-summary-card">
+                    <div class="summary-icon" aria-hidden="true">🎯</div>
+                    <div class="summary-details">
+                        <h2>Budget Utilization</h2>
+                        <p class="summary-value">72%</p>
+                        <p class="summary-description">Of allocated budgets</p>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- SECTION 4: Search, filters and sorting -->
+            <section class="category-toolbar" aria-label="Find categories">
+
+                <div class="category-search">
+                    <label for="categorySearch" class="visually-hidden">
+                        Search categories
+                    </label>
+                    <input type="search" id="categorySearch"
+                           placeholder="Search categories...">
+                </div>
+
+                <div class="category-filters">
+                    <div class="filter-control">
+                        <label for="categoryFilter" class="visually-hidden">
+                            Filter categories
+                        </label>
+                        <select id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <option value="with-expenses">With Expenses</option>
+                            <option value="without-expenses">No Expenses</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-control">
+                        <label for="categorySort" class="visually-hidden">
+                            Sort categories
+                        </label>
+                        <select id="categorySort">
+                            <option value="highest">Highest Spend</option>
+                            <option value="lowest">Lowest Spend</option>
+                            <option value="alphabetical">Alphabetical</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-control">
+                        <label for="spendingPeriod" class="visually-hidden">
+                            Spending period
+                        </label>
+                        <select id="spendingPeriod">
+                            <option value="month">This Month</option>
+                            <option value="last-month">Last Month</option>
+                            <option value="all-time">All Time</option>
+                        </select>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SECTION 5: Category cards -->
+            <section class="category-list-section"
+                     aria-labelledby="categoryListHeading">
+
+                <div class="category-list-header">
+                    <div>
+                        <h2 id="categoryListHeading">Your Categories</h2>
+                        <p>Review spending and manage your categories.</p>
+                    </div>
+
+                    <p class="category-count">8 categories</p>
+                </div>
+
+                <div class="category-grid" id="categoryGrid">
+
+                    <!-- Category card 1 -->
+                    <article class="category-card"
+                             data-category="Food & Dining"
+                             data-spent="8000"
+                             data-transactions="12">
+
+                        <div class="category-card-header">
+                            <div class="category-identity">
+                                <span class="category-icon food-icon"
+                                      aria-hidden="true">🍽️</span>
+                                <div>
+                                    <h3>Food &amp; Dining</h3>
+                                    <p>12 transactions</p>
+                                </div>
+                            </div>
+
+                            <div class="category-menu-wrapper">
+                                <button type="button"
+                                        class="category-menu-button"
+                                        aria-label="Food and Dining actions"
+                                        aria-expanded="false">
+                                    ⋮
+                                </button>
+
+                                <div class="category-action-menu" hidden>
+                                    <button type="button"
+                                            data-action="edit">
+                                        Edit Category
+                                    </button>
+                                    <button type="button"
+                                            data-action="budget">
+                                        Set / Update Budget
+                                    </button>
+                                    <button type="button"
+                                            data-action="archive">
+                                        Archive Category
+                                    </button>
+                                    <button type="button"
+                                            class="delete-category-action"
+                                            data-action="delete">
+                                        Delete Category
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-spending">
+                            <p class="spent-amount">₹8,000</p>
+                            <p class="spending-share">33% of total spending</p>
+                        </div>
+
+                        <div class="spending-progress">
+                            <div class="progress-track"
+                                 role="progressbar"
+                                 aria-label="Food and Dining share of spending"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"
+                                 aria-valuenow="33">
+                                <div class="progress-fill"
+                                     style="width: 33%"></div>
+                            </div>
+                        </div>
+
+                        <div class="category-budget">
+                            <div class="budget-heading">
+                                <span>Monthly Budget</span>
+                                <strong>₹10,000</strong>
+                            </div>
+                            <div class="budget-track"
+                                 role="progressbar"
+                                 aria-label="Food and Dining budget used"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"
+                                 aria-valuenow="80">
+                                <div class="budget-fill"
+                                     style="width: 80%"></div>
+                            </div>
+                            <p>₹2,000 remaining · 80% used</p>
+                        </div>
+
+                        <a href="my-expenses.html?category=food"
+                           class="view-expenses-link">
+                            View Expenses <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- Category card 2 -->
+                    <article class="category-card"
+                             data-category="Housing"
+                             data-spent="7000"
+                             data-transactions="3">
+
+                        <div class="category-card-header">
+                            <div class="category-identity">
+                                <span class="category-icon housing-icon"
+                                      aria-hidden="true">🏠</span>
+                                <div>
+                                    <h3>Housing</h3>
+                                    <p>3 transactions</p>
+                                </div>
+                            </div>
+
+                            <div class="category-menu-wrapper">
+                                <button type="button"
+                                        class="category-menu-button"
+                                        aria-label="Housing actions"
+                                        aria-expanded="false">⋮</button>
+                                <div class="category-action-menu" hidden>
+                                    <button type="button" data-action="edit">Edit Category</button>
+                                    <button type="button" data-action="budget">Set / Update Budget</button>
+                                    <button type="button" data-action="archive">Archive Category</button>
+                                    <button type="button" class="delete-category-action" data-action="delete">Delete Category</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-spending">
+                            <p class="spent-amount">₹7,000</p>
+                            <p class="spending-share">29% of total spending</p>
+                        </div>
+
+                        <div class="spending-progress">
+                            <div class="progress-track" role="progressbar"
+                                 aria-label="Housing share of spending"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="29">
+                                <div class="progress-fill" style="width: 29%"></div>
+                            </div>
+                        </div>
+
+                        <div class="category-budget">
+                            <div class="budget-heading">
+                                <span>Monthly Budget</span>
+                                <strong>₹15,000</strong>
+                            </div>
+                            <div class="budget-track" role="progressbar"
+                                 aria-label="Housing budget used"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="47">
+                                <div class="budget-fill" style="width: 47%"></div>
+                            </div>
+                            <p>₹8,000 remaining · 47% used</p>
+                        </div>
+
+                        <a href="my-expenses.html?category=housing"
+                           class="view-expenses-link">
+                            View Expenses <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- Category card 3 -->
+                    <article class="category-card"
+                             data-category="Transportation"
+                             data-spent="4000"
+                             data-transactions="8">
+
+                        <div class="category-card-header">
+                            <div class="category-identity">
+                                <span class="category-icon transport-icon"
+                                      aria-hidden="true">🚗</span>
+                                <div>
+                                    <h3>Transportation</h3>
+                                    <p>8 transactions</p>
+                                </div>
+                            </div>
+                            <div class="category-menu-wrapper">
+                                <button type="button" class="category-menu-button"
+                                        aria-label="Transportation actions"
+                                        aria-expanded="false">⋮</button>
+                                <div class="category-action-menu" hidden>
+                                    <button type="button" data-action="edit">Edit Category</button>
+                                    <button type="button" data-action="budget">Set / Update Budget</button>
+                                    <button type="button" data-action="archive">Archive Category</button>
+                                    <button type="button" class="delete-category-action" data-action="delete">Delete Category</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-spending">
+                            <p class="spent-amount">₹4,000</p>
+                            <p class="spending-share">16% of total spending</p>
+                        </div>
+
+                        <div class="spending-progress">
+                            <div class="progress-track" role="progressbar"
+                                 aria-label="Transportation share of spending"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="16">
+                                <div class="progress-fill" style="width: 16%"></div>
+                            </div>
+                        </div>
+
+                        <div class="category-budget">
+                            <div class="budget-heading">
+                                <span>Monthly Budget</span>
+                                <strong>₹8,000</strong>
+                            </div>
+                            <div class="budget-track" role="progressbar"
+                                 aria-label="Transportation budget used"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="50">
+                                <div class="budget-fill" style="width: 50%"></div>
+                            </div>
+                            <p>₹4,000 remaining · 50% used</p>
+                        </div>
+
+                        <a href="my-expenses.html?category=transportation"
+                           class="view-expenses-link">
+                            View Expenses <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- Category card 4 -->
+                    <article class="category-card"
+                             data-category="Shopping"
+                             data-spent="5500"
+                             data-transactions="6">
+
+                        <div class="category-card-header">
+                            <div class="category-identity">
+                                <span class="category-icon shopping-icon"
+                                      aria-hidden="true">🛍️</span>
+                                <div>
+                                    <h3>Shopping</h3>
+                                    <p>6 transactions</p>
+                                </div>
+                            </div>
+                            <div class="category-menu-wrapper">
+                                <button type="button" class="category-menu-button"
+                                        aria-label="Shopping actions"
+                                        aria-expanded="false">⋮</button>
+                                <div class="category-action-menu" hidden>
+                                    <button type="button" data-action="edit">Edit Category</button>
+                                    <button type="button" data-action="budget">Set / Update Budget</button>
+                                    <button type="button" data-action="archive">Archive Category</button>
+                                    <button type="button" class="delete-category-action" data-action="delete">Delete Category</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-spending">
+                            <p class="spent-amount">₹5,500</p>
+                            <p class="spending-share">22% of total spending</p>
+                        </div>
+
+                        <div class="spending-progress">
+                            <div class="progress-track" role="progressbar"
+                                 aria-label="Shopping share of spending"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="22">
+                                <div class="progress-fill" style="width: 22%"></div>
+                            </div>
+                        </div>
+
+                        <div class="category-budget">
+                            <div class="budget-heading">
+                                <span>Monthly Budget</span>
+                                <strong>₹7,000</strong>
+                            </div>
+                            <div class="budget-track" role="progressbar"
+                                 aria-label="Shopping budget used"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="79">
+                                <div class="budget-fill" style="width: 79%"></div>
+                            </div>
+                            <p>₹1,500 remaining · 79% used</p>
+                        </div>
+
+                        <a href="my-expenses.html?category=shopping"
+                           class="view-expenses-link">
+                            View Expenses <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- Category card 5 -->
+                    <article class="category-card"
+                             data-category="Entertainment"
+                             data-spent="2800"
+                             data-transactions="4">
+
+                        <div class="category-card-header">
+                            <div class="category-identity">
+                                <span class="category-icon entertainment-icon"
+                                      aria-hidden="true">🎬</span>
+                                <div>
+                                    <h3>Entertainment</h3>
+                                    <p>4 transactions</p>
+                                </div>
+                            </div>
+                            <div class="category-menu-wrapper">
+                                <button type="button" class="category-menu-button"
+                                        aria-label="Entertainment actions"
+                                        aria-expanded="false">⋮</button>
+                                <div class="category-action-menu" hidden>
+                                    <button type="button" data-action="edit">Edit Category</button>
+                                    <button type="button" data-action="budget">Set / Update Budget</button>
+                                    <button type="button" data-action="archive">Archive Category</button>
+                                    <button type="button" class="delete-category-action" data-action="delete">Delete Category</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-spending">
+                            <p class="spent-amount">₹2,800</p>
+                            <p class="spending-share">11% of total spending</p>
+                        </div>
+
+                        <div class="spending-progress">
+                            <div class="progress-track" role="progressbar"
+                                 aria-label="Entertainment share of spending"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="11">
+                                <div class="progress-fill" style="width: 11%"></div>
+                            </div>
+                        </div>
+
+                        <div class="category-budget">
+                            <div class="budget-heading">
+                                <span>Monthly Budget</span>
+                                <strong>₹5,000</strong>
+                            </div>
+                            <div class="budget-track" role="progressbar"
+                                 aria-label="Entertainment budget used"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="56">
+                                <div class="budget-fill" style="width: 56%"></div>
+                            </div>
+                            <p>₹2,200 remaining · 56% used</p>
+                        </div>
+
+                        <a href="my-expenses.html?category=entertainment"
+                           class="view-expenses-link">
+                            View Expenses <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- Category card 6 -->
+                    <article class="category-card"
+                             data-category="Health & Fitness"
+                             data-spent="1200"
+                             data-transactions="3">
+
+                        <div class="category-card-header">
+                            <div class="category-identity">
+                                <span class="category-icon health-icon"
+                                      aria-hidden="true">❤️</span>
+                                <div>
+                                    <h3>Health &amp; Fitness</h3>
+                                    <p>3 transactions</p>
+                                </div>
+                            </div>
+                            <div class="category-menu-wrapper">
+                                <button type="button" class="category-menu-button"
+                                        aria-label="Health and Fitness actions"
+                                        aria-expanded="false">⋮</button>
+                                <div class="category-action-menu" hidden>
+                                    <button type="button" data-action="edit">Edit Category</button>
+                                    <button type="button" data-action="budget">Set / Update Budget</button>
+                                    <button type="button" data-action="archive">Archive Category</button>
+                                    <button type="button" class="delete-category-action" data-action="delete">Delete Category</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-spending">
+                            <p class="spent-amount">₹1,200</p>
+                            <p class="spending-share">5% of total spending</p>
+                        </div>
+
+                        <div class="spending-progress">
+                            <div class="progress-track" role="progressbar"
+                                 aria-label="Health and Fitness share of spending"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="5">
+                                <div class="progress-fill" style="width: 5%"></div>
+                            </div>
+                        </div>
+
+                        <div class="category-budget">
+                            <div class="budget-heading">
+                                <span>Monthly Budget</span>
+                                <strong>₹3,000</strong>
+                            </div>
+                            <div class="budget-track" role="progressbar"
+                                 aria-label="Health and Fitness budget used"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="40">
+                                <div class="budget-fill" style="width: 40%"></div>
+                            </div>
+                            <p>₹1,800 remaining · 40% used</p>
+                        </div>
+
+                        <a href="my-expenses.html?category=health"
+                           class="view-expenses-link">
+                            View Expenses <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- Category card 7 -->
+                    <article class="category-card"
+                             data-category="Utilities"
+                             data-spent="1500"
+                             data-transactions="5">
+
+                        <div class="category-card-header">
+                            <div class="category-identity">
+                                <span class="category-icon utilities-icon"
+                                      aria-hidden="true">💡</span>
+                                <div>
+                                    <h3>Utilities</h3>
+                                    <p>5 transactions</p>
+                                </div>
+                            </div>
+                            <div class="category-menu-wrapper">
+                                <button type="button" class="category-menu-button"
+                                        aria-label="Utilities actions"
+                                        aria-expanded="false">⋮</button>
+                                <div class="category-action-menu" hidden>
+                                    <button type="button" data-action="edit">Edit Category</button>
+                                    <button type="button" data-action="budget">Set / Update Budget</button>
+                                    <button type="button" data-action="archive">Archive Category</button>
+                                    <button type="button" class="delete-category-action" data-action="delete">Delete Category</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-spending">
+                            <p class="spent-amount">₹1,500</p>
+                            <p class="spending-share">6% of total spending</p>
+                        </div>
+
+                        <div class="spending-progress">
+                            <div class="progress-track" role="progressbar"
+                                 aria-label="Utilities share of spending"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="6">
+                                <div class="progress-fill" style="width: 6%"></div>
+                            </div>
+                        </div>
+
+                        <div class="category-budget">
+                            <div class="budget-heading">
+                                <span>Monthly Budget</span>
+                                <strong>₹4,000</strong>
+                            </div>
+                            <div class="budget-track" role="progressbar"
+                                 aria-label="Utilities budget used"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="38">
+                                <div class="budget-fill" style="width: 38%"></div>
+                            </div>
+                            <p>₹2,500 remaining · 38% used</p>
+                        </div>
+
+                        <a href="my-expenses.html?category=utilities"
+                           class="view-expenses-link">
+                            View Expenses <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- Category card 8 -->
+                    <article class="category-card"
+                             data-category="Work & Tech"
+                             data-spent="1500"
+                             data-transactions="2">
+
+                        <div class="category-card-header">
+                            <div class="category-identity">
+                                <span class="category-icon work-icon"
+                                      aria-hidden="true">💻</span>
+                                <div>
+                                    <h3>Work &amp; Tech</h3>
+                                    <p>2 transactions</p>
+                                </div>
+                            </div>
+                            <div class="category-menu-wrapper">
+                                <button type="button" class="category-menu-button"
+                                        aria-label="Work and Tech actions"
+                                        aria-expanded="false">⋮</button>
+                                <div class="category-action-menu" hidden>
+                                    <button type="button" data-action="edit">Edit Category</button>
+                                    <button type="button" data-action="budget">Set / Update Budget</button>
+                                    <button type="button" data-action="archive">Archive Category</button>
+                                    <button type="button" class="delete-category-action" data-action="delete">Delete Category</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-spending">
+                            <p class="spent-amount">₹1,500</p>
+                            <p class="spending-share">6% of total spending</p>
+                        </div>
+
+                        <div class="spending-progress">
+                            <div class="progress-track" role="progressbar"
+                                 aria-label="Work and Tech share of spending"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="6">
+                                <div class="progress-fill" style="width: 6%"></div>
+                            </div>
+                        </div>
+
+                        <div class="category-budget">
+                            <div class="budget-heading">
+                                <span>Monthly Budget</span>
+                                <strong>₹3,000</strong>
+                            </div>
+                            <div class="budget-track" role="progressbar"
+                                 aria-label="Work and Tech budget used"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 aria-valuenow="50">
+                                <div class="budget-fill" style="width: 50%"></div>
+                            </div>
+                            <p>₹1,500 remaining · 50% used</p>
+                        </div>
+
+                        <a href="my-expenses.html?category=work-tech"
+                           class="view-expenses-link">
+                            View Expenses <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                </div>
+
+                <!-- Empty state for future search/filter functionality -->
+                <div class="category-empty-state" id="categoryEmptyState" hidden>
+                    <h3>No categories found</h3>
+                    <p>Try another search or change your filters.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- SECTION 6: Add Category modal -->
+    <div class="modal-overlay" id="addCategoryModal" hidden>
+        <section class="category-modal"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="addCategoryTitle">
+
+            <div class="modal-header">
+                <div>
+                    <h2 id="addCategoryTitle">Add Category</h2>
+                    <p>Create a category to organize your expenses.</p>
+                </div>
+                <button type="button" class="modal-close"
+                        data-close-modal="addCategoryModal"
+                        aria-label="Close Add Category modal">×</button>
+            </div>
+
+            <form id="addCategoryForm">
+                <div class="form-group">
+                    <label for="newCategoryName">Category Name *</label>
+                    <input type="text" id="newCategoryName"
+                           name="categoryName" maxlength="40"
+                           placeholder="e.g. Food & Dining" required>
+                </div>
+
+                <fieldset class="form-group icon-picker">
+                    <legend>Choose an Icon</legend>
+                    <label><input type="radio" name="categoryIcon" value="🍽️" checked><span>🍽️</span></label>
+                    <label><input type="radio" name="categoryIcon" value="🏠"><span>🏠</span></label>
+                    <label><input type="radio" name="categoryIcon" value="🚗"><span>🚗</span></label>
+                    <label><input type="radio" name="categoryIcon" value="🛍️"><span>🛍️</span></label>
+                    <label><input type="radio" name="categoryIcon" value="❤️"><span>❤️</span></label>
+                    <label><input type="radio" name="categoryIcon" value="💻"><span>💻</span></label>
+                    <label><input type="radio" name="categoryIcon" value="💡"><span>💡</span></label>
+                    <label><input type="radio" name="categoryIcon" value="🎬"><span>🎬</span></label>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="newCategoryBudget">Monthly Budget (optional)</label>
+                    <input type="number" id="newCategoryBudget"
+                           name="monthlyBudget" min="0" step="0.01"
+                           placeholder="Enter amount in ₹">
+                </div>
+
+                <div class="form-group">
+                    <label for="newCategoryColor">Category Color (optional)</label>
+                    <input type="color" id="newCategoryColor"
+                           name="categoryColor" value="#15966A">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="cancel-button"
+                            data-close-modal="addCategoryModal">Cancel</button>
+                    <button type="submit" class="save-category-button">
+                        Save Category
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <!-- SECTION 7: Edit Category modal -->
+    <div class="modal-overlay" id="editCategoryModal" hidden>
+        <section class="category-modal"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="editCategoryTitle">
+
+            <div class="modal-header">
+                <div>
+                    <h2 id="editCategoryTitle">Edit Category</h2>
+                    <p>Update your category details.</p>
+                </div>
+                <button type="button" class="modal-close"
+                        data-close-modal="editCategoryModal"
+                        aria-label="Close Edit Category modal">×</button>
+            </div>
+
+            <form id="editCategoryForm">
+                <input type="hidden" id="editCategoryId" name="categoryId">
+
+                <div class="form-group">
+                    <label for="editCategoryName">Category Name *</label>
+                    <input type="text" id="editCategoryName"
+                           name="categoryName" maxlength="40"
+                           placeholder="Enter category name" required>
+                </div>
+
+                <fieldset class="form-group icon-picker">
+                    <legend>Choose an Icon</legend>
+                    <label><input type="radio" name="editCategoryIcon" value="🍽️"><span>🍽️</span></label>
+                    <label><input type="radio" name="editCategoryIcon" value="🏠"><span>🏠</span></label>
+                    <label><input type="radio" name="editCategoryIcon" value="🚗"><span>🚗</span></label>
+                    <label><input type="radio" name="editCategoryIcon" value="🛍️"><span>🛍️</span></label>
+                    <label><input type="radio" name="editCategoryIcon" value="❤️"><span>❤️</span></label>
+                    <label><input type="radio" name="editCategoryIcon" value="💻"><span>💻</span></label>
+                    <label><input type="radio" name="editCategoryIcon" value="💡"><span>💡</span></label>
+                    <label><input type="radio" name="editCategoryIcon" value="🎬"><span>🎬</span></label>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="editCategoryBudget">Monthly Budget (optional)</label>
+                    <input type="number" id="editCategoryBudget"
+                           name="monthlyBudget" min="0" step="0.01"
+                           placeholder="Enter amount in ₹">
+                </div>
+
+                <div class="form-group">
+                    <label for="editCategoryColor">Category Color (optional)</label>
+                    <input type="color" id="editCategoryColor"
+                           name="categoryColor" value="#15966A">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="cancel-button"
+                            data-close-modal="editCategoryModal">Cancel</button>
+                    <button type="submit" class="save-category-button">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <!-- SECTION 8: Delete confirmation modal -->
+    <div class="modal-overlay" id="deleteCategoryModal" hidden>
+        <section class="category-modal confirmation-modal"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="deleteCategoryTitle">
+
+            <div class="modal-header">
+                <div>
+                    <h2 id="deleteCategoryTitle">Delete Category?</h2>
+                    <p id="deleteCategoryMessage">
+                        Make sure you understand how this affects existing expenses.
+                    </p>
+                </div>
+                <button type="button" class="modal-close"
+                        data-close-modal="deleteCategoryModal"
+                        aria-label="Close delete confirmation">×</button>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="cancel-button"
+                        data-close-modal="deleteCategoryModal">Cancel</button>
+                <button type="button" class="delete-confirm-button"
+                        id="confirmDeleteCategory">
+                    Delete Category
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script src="../javascript/categories.js" defer></script>
+</body>
+</html>
