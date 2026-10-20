@@ -1,4 +1,4 @@
-# Expense Tracker System
+# Expense Tracker 
 
 A responsive personal finance web application designed to help users manage expenses, track income, monitor spending patterns, and understand their financial activity through a clean and intuitive interface.
 
