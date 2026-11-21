@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | ExpenseWise</title>
+    <link rel="stylesheet" href="../css/reports.css">
+    <script src="../javascript/reports.js" defer></script>
+</head>
+<body>
+    <div class="reports-layout">
+        <!-- ==================== SIDEBAR ==================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+                <h2>Expense Tracker</h2>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="nav-link">
+                    <span>🏠</span>
+                    Dashboard
+                </a>
+
+                <a href="my-expenses.html" class="nav-link">
+                    <span>💳</span>
+                    My Expenses
+                </a>
+
+                <a href="categories.html" class="nav-link">
+                    <span>📊</span>
+                    Categories
+                </a>
+
+                <a href="reports.html" class="nav-link active">
+                    <span>📈</span>
+                    Reports
+                </a>
+
+                <a href="profile.html" class="nav-link">
+                    <span>👤</span>
+                    Profile
+                </a>
+
+                <a href="settings.html" class="nav-link">
+                    <span>⚙️</span>
+                    Settings
+                </a>
+
+            </nav>
+
+            <div class="logout-section">
+
+                <a href="#" class="nav-link">
+                    <span>↪️</span>
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- main content -->
+        <main class="reports-main">
+            <header class="reports-header">
+                <div class="page-heading">
+                    <div class="title-line">
+                        <h1>Reports</h1>
+                        <span class="version-badge">Analytics v1.0</span>
+                    </div>
+                    <p>Understand your spending patterns and budget performance.</p>
+                </div>
+
+                <div class="report-actions">
+                    <label class="sr-only" for="period-filter">Report period</label>
+                    <select id="period-filter" class="toolbar-control">
+                        <option value="this-month">This Month</option>
+                        <option value="last-month">Last Month</option>
+                        <option value="last-3-months">Last 3 Months</option>
+                        <option value="this-year">This Year</option>
+                        <option value="all-time">All Time</option>
+                        <option value="custom">Custom Range</option>
+                    </select>
+
+                    <label class="sr-only" for="category-filter">Expense category</label>
+                    <select id="category-filter" class="toolbar-control">
+                        <option value="all">All Categories</option>
+                    </select>
+
+                    <button id="export-csv-btn" class="export-button" type="button">
+                        <span aria-hidden="true">↓</span> Export CSV
+                    </button>
+                </div>
+            </header>
+
+            <section id="custom-date-controls" class="custom-date-controls" hidden>
+                <div class="date-field">
+                    <label for="start-date">From</label>
+                    <input type="date" id="start-date">
+                </div>
+                <div class="date-field">
+                    <label for="end-date">To</label>
+                    <input type="date" id="end-date">
+                </div>
+                <p id="date-error" class="date-error" role="alert"></p>
+            </section>
+
+            <section class="summary-grid" aria-label="Expense summary">
+                <article class="summary-card">
+                    <div>
+                        <p class="summary-label">Total Expenses</p>
+                        <h2 id="total-expenses">₹0</h2>
+                        <p class="summary-note">Selected period total</p>
+                    </div>
+                    <span class="summary-icon" aria-hidden="true">▤</span>
+                </article>
+
+                <article class="summary-card">
+                    <div>
+                        <p class="summary-label">Budget Remaining</p>
+                        <h2 id="budget-remaining">—</h2>
+                        <p class="summary-note" id="budget-summary-note">No budget data available</p>
+                    </div>
+                    <span class="summary-icon" aria-hidden="true">♢</span>
+                </article>
+
+                <article class="summary-card">
+                    <div>
+                        <p class="summary-label">Daily Average</p>
+                        <h2 id="daily-average">₹0</h2>
+                        <p class="summary-note" id="daily-average-note">Across 0 days</p>
+                    </div>
+                    <span class="summary-icon" aria-hidden="true">▦</span>
+                </article>
+
+                <article class="summary-card">
+                    <div>
+                        <p class="summary-label">Top Category</p>
+                        <h2 id="top-category">—</h2>
+                        <p class="summary-note" id="top-category-note">No expenses recorded</p>
+                    </div>
+                    <span class="summary-icon" aria-hidden="true">♙</span>
+                </article>
+            </section>
+
+            <section class="analytics-grid">
+                <article class="report-card trend-card">
+                    <div class="card-heading">
+                        <div>
+                            <h2>Spending Trend</h2>
+                            <p>Daily spending trajectory for chosen duration</p>
+                        </div>
+                    </div>
+                    <div class="line-chart-wrap">
+                        <canvas id="spending-trend-chart" role="img"
+                            aria-label="Line chart showing spending over the selected period"></canvas>
+                        <p id="trend-empty" class="chart-empty" hidden>No expenses found for this period.</p>
+                    </div>
+                </article>
+
+                <article class="report-card category-card">
+                    <div class="card-heading">
+                        <div>
+                            <h2>Category Breakdown</h2>
+                            <p>Share of total expenditures</p>
+                        </div>
+                        <span id="category-count" class="count-badge">0 Categories</span>
+                    </div>
+                    <div class="donut-wrap">
+                        <canvas id="category-donut-chart" role="img"
+                            aria-label="Doughnut chart showing expense totals by category"></canvas>
+                        <p id="category-empty" class="chart-empty" hidden>No category data available.</p>
+                    </div>
+                    <div id="category-legend" class="category-legend"></div>
+                </article>
+            </section>
+
+            <section class="report-card budget-card">
+                <div class="budget-heading">
+                    <div>
+                        <h2>Budget Performance</h2>
+                        <p>Comparison of actual spending against target category limits for the active month.</p>
+                    </div>
+                    <div class="budget-legend" aria-label="Budget status legend">
+                        <span><i class="legend-dot within"></i>Within Budget</span>
+                        <span><i class="legend-dot warning"></i>Warning (&gt;80%)</span>
+                        <span><i class="legend-dot exceeded"></i>Exceeded</span>
+                    </div>
+                </div>
+
+                <div class="table-scroll">
+                    <table class="budget-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Budget Limit</th>
+                                <th>Amount Spent</th>
+                                <th>Remaining</th>
+                                <th>Usage Progress</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="budget-table-body">
+                            <tr><td colspan="6" class="table-empty">No budget data available. Add category budgets to see performance.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <p id="reports-message" class="reports-message" role="status" aria-live="polite"></p>
+        </main>
+    </div>
+</body>
+</html>

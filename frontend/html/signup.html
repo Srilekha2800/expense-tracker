@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../css/signup.css">
 </head>
 
+<script src="../javascript/storage.js" defer></script>
+<script src="../javascript/auth.js" defer></script>
+
 <body>
 
     <section class="signup-container">
@@ -21,7 +24,9 @@
                 Join Expense Tracker and start managing your finances today.
             </p>
 
-            <form action="#" class="signup-form">
+            <form action="#" id="signup-form" class="signup-form">
+
+                <p id="signup-message" class="form-message" aria-live="polite"></p>
 
                 <div class="form-group">
                     <label for="username">Username</label>
@@ -87,4 +92,6 @@
     </section>
 
 </body>
+
+
 </html>

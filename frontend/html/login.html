@@ -7,6 +7,11 @@
 
     <link rel="stylesheet" href="../css/login.css">
 </head>
+
+<script src="../javascript/storage.js" defer></script>
+<script src="../javascript/auth.js" defer></script>
+<script src="../javascript/app.js" defer></script>
+
 <body>
     <section id="login" class="login-container">
         <div class="login-card"> 
@@ -20,7 +25,10 @@
                 Sign in to continue managing your personal finances.
             </p>
         
-            <form class="login-form">
+            <form  id="login-form" class="login-form">
+
+                <p id="login-message" class="form-message" aria-live="polite"></p>
+
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" class="email" name="email" placeholder="Enter your email address" required>
