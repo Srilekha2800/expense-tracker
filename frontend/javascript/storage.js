@@ -1,9 +1,7 @@
 
 
-
-// ========================================
 // EXPENSE TRACKER - LOCAL STORAGE MODULE
-// ========================================
+
 
 // Centralized names for Local Storage keys
 const STORAGE_KEYS = {
@@ -12,9 +10,8 @@ const STORAGE_KEYS = {
 };
 
 
-// ========================================
 // HELPER FUNCTION
-// ========================================
+
 
 // Retrieve and convert stored JSON data
 function getStoredData(key, defaultValue) {
@@ -33,9 +30,8 @@ function getStoredData(key, defaultValue) {
 }
 
 
-// ========================================
 // USER STORAGE FUNCTIONS
-// ========================================
+
 
 // Retrieve all registered users
 function getUsers() {
@@ -57,10 +53,8 @@ function saveUsers(users) {
     );
 }
 
-
-// ========================================
 // SESSION STORAGE FUNCTIONS
-// ========================================
+
 
 // Retrieve the currently logged-in user session
 function getSession() {
@@ -100,10 +94,7 @@ function clearSession() {
     localStorage.removeItem(STORAGE_KEYS.SESSION);
 }
 
-
-// ========================================
 // PUBLIC STORAGE API
-// ========================================
 
 window.ExpenseStorage = {
     getUsers,

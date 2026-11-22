@@ -1,7 +1,6 @@
 
-/* =========================================
-   EXPENSE TRACKER - APPLICATION CONTROLLER
-========================================= */
+//    EXPENSE TRACKER - APPLICATION CONTROLLER
+
 
 document.addEventListener("DOMContentLoaded", () => {
 

@@ -1,13 +1,9 @@
 
-
-/* =========================================
-   EXPENSE TRACKER - AUTHENTICATION MODULE
-========================================= */
+// EXPENSE TRACKER - AUTHENTICATION MODULE
 
 
-/* -----------------------------------------
-   1. DISPLAY FORM MESSAGES
------------------------------------------ */
+//  1. DISPLAY FORM MESSAGES
+
 
 function showMessage(form, message, type) {
     let messageElement = form.querySelector(".form-message");
@@ -30,9 +26,8 @@ function showMessage(form, message, type) {
 }
 
 
-/* -----------------------------------------
-   2. PASSWORD HASHING FOR DEMO STORAGE
------------------------------------------ */
+//    2. PASSWORD HASHING FOR DEMO STORAGE
+
 
 // Convert a byte array into a hexadecimal string
 function bytesToHex(bytes) {
@@ -96,9 +91,9 @@ async function verifyPassword(password, user) {
 }
 
 
-/* -----------------------------------------
-   3. SIGNUP FUNCTIONALITY
------------------------------------------ */
+
+// 3. SIGNUP FUNCTIONALITY
+
 
 async function handleSignup(event) {
     event.preventDefault();
@@ -199,9 +194,7 @@ async function handleSignup(event) {
 }
 
 
-/* -----------------------------------------
-   4. LOGIN FUNCTIONALITY
------------------------------------------ */
+// 4. LOGIN FUNCTIONALITY
 
 async function handleLogin(event) {
     event.preventDefault();
@@ -281,9 +274,7 @@ async function handleLogin(event) {
 }
 
 
-/* -----------------------------------------
-   5. CONNECT FORMS TO EVENT HANDLERS
------------------------------------------ */
+//  5. CONNECT FORMS TO EVENT HANDLERS
 
 document.addEventListener("DOMContentLoaded", () => {
 
